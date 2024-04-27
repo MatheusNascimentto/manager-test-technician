@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 public class Pessoa implements Serializable {
@@ -31,7 +30,7 @@ public class Pessoa implements Serializable {
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, String cpf, LocalDate dataNascimento, Endereco endereco, List<Boleto> boletos) {
+    public Pessoa(Long id, String nome, String cpf, LocalDate dataNascimento, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;

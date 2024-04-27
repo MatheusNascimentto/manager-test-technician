@@ -85,7 +85,7 @@ public class PessoaServiceTest {
     public void deveBuscarPessoaEAtualizarComSucesso() {
         Long id = 1L;
         PessoaDTO pessoaDTO = new PessoaDTO();
-        pessoaDTO.setNome("Matheus");
+        pessoaDTO.setNome("Matheus Nascimento");
 
         Pessoa pessoa = new Pessoa();
         pessoa.setId(id);
@@ -96,7 +96,7 @@ public class PessoaServiceTest {
         Pessoa updatedPessoa = pessoaService.update(id, pessoaDTO);
 
         assertEquals(id, updatedPessoa.getId());
-        assertEquals("Teste Atualizado", updatedPessoa.getNome());
+        assertEquals("Matheus Nascimento", updatedPessoa.getNome());
     }
 
     @Test

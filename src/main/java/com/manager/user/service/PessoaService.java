@@ -1,7 +1,9 @@
 package com.manager.user.service;
 
 import com.manager.user.domain.Pessoa;
+import com.manager.user.dto.BoletoDTO;
 import com.manager.user.dto.PessoaDTO;
+import com.manager.user.feign.BoletoFeignClient;
 import com.manager.user.service.exception.ObjectNotFoundException;
 import com.manager.user.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,15 @@ import java.util.Optional;
 public class PessoaService {
     @Autowired
     private PessoaRepository repository;
+
+    @Autowired
+    private BoletoFeignClient client;
+
+    public List<BoletoDTO> findByIdBoleto(Long id) {
+        List<BoletoDTO> obj = client.getBoletosPorPessoa(id).getBody();
+        return obj;
+
+    }
 
     public Pessoa findById(Long id) {
         Optional<Pessoa> obj = repository.findById(id);

@@ -1,16 +1,17 @@
 package com.manager.user.feign;
 
-import com.manager.user.domain.Boleto;
+import com.manager.user.dto.BoletoDTO;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "BoletoService", url = "http://localhost:8080/boleto")
+@FeignClient(name = "boleto", url = "http://localhost:8065/boleto")
 public interface BoletoFeignClient {
 
-    @GetMapping("/pessoa/{id}/boleto")
-    List<Boleto> getBoletosPorPessoa(@PathVariable("id") Long id);
+    @GetMapping("/pessoa/{id}")
+    ResponseEntity<List<BoletoDTO>> getBoletosPorPessoa(@PathVariable("id") Long id);
 
 }

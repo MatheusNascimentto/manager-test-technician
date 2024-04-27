@@ -1,10 +1,8 @@
 package com.manager.user.service;
 
 
-import com.manager.user.domain.Boleto;
 import com.manager.user.domain.Endereco;
 import com.manager.user.domain.Pessoa;
-import com.manager.user.repository.BoletoRepository;
 import com.manager.user.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,18 +11,11 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Arrays;
 
-import static com.manager.user.domain.StatusBoleto.PAGO;
-import static com.manager.user.domain.StatusBoleto.PENDENTE;
-import static com.manager.user.domain.StatusBoleto.VENCIDO;
-
 @Service
 public class DBservice implements CommandLineRunner {
 
     @Autowired
     private PessoaRepository pessoaRepository;
-    @Autowired
-    private BoletoRepository boletoRepository;
-
     public void instanciaBaseDeDados() {
 
         // ====================== ENDEREÇO =============================
@@ -56,28 +47,6 @@ public class DBservice implements CommandLineRunner {
         p2.setEndereco(e2);
 
         this.pessoaRepository.saveAll(Arrays.asList(p1, p2));
-
-        // ====================== BOLETO =============================
-
-        LocalDate localDateBoleto = LocalDate.now();
-
-        Boleto b1 = new Boleto();
-        b1.setPessoa(p1);
-        b1.setStatus(PAGO);
-        b1.setValorPago(100.00);
-        b1.setValor(100.00);
-        b1.setDataVencimento(localDateBoleto);
-        b1.setDataPagamento(localDateBoleto);
-
-        Boleto b2 = new Boleto();
-        b2.setPessoa(p2);
-        b2.setStatus(PENDENTE);
-        b2.setValorPago(200.00);
-        b2.setValor(200.00);
-        b2.setDataVencimento(localDateBoleto);
-        b2.setDataPagamento(localDateBoleto);
-
-        this.boletoRepository.saveAll(Arrays.asList(b1, b2));
 
     }
 
@@ -114,28 +83,6 @@ public class DBservice implements CommandLineRunner {
 
 
         this.pessoaRepository.saveAll(Arrays.asList(p1, p2));
-
-        //====================== BOLETO =============================
-
-        LocalDate localDateBoleto = LocalDate.now();
-
-        Boleto b1 = new Boleto();
-        b1.setPessoa(p1);
-        b1.setStatus(PAGO);
-        b1.setValorPago(100.00);
-        b1.setValor(100.00);
-        b1.setDataVencimento(localDateBoleto);
-        b1.setDataPagamento(localDateBoleto);
-
-        Boleto b2 = new Boleto();
-        b2.setPessoa(p2);
-        b2.setStatus(PENDENTE);
-        b2.setValorPago(200.00);
-        b2.setValor(200.00);
-        b2.setDataVencimento(localDateBoleto);
-        b2.setDataPagamento(localDateBoleto);
-
-        this.boletoRepository.saveAll(Arrays.asList(b1, b2));
 
     }
 }
