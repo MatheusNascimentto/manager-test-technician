@@ -26,6 +26,12 @@ public class PessoaController {
         return ResponseEntity.ok().body(obj);
     }
 
+    @GetMapping(value = "/boleto/{id}")
+    public ResponseEntity<List<BoletoDTO>> findByIdBoleto(@PathVariable Long id) {
+        List<BoletoDTO> obj = pessoaService.findByIdBoleto(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Pessoa> findById(@PathVariable Long id) {

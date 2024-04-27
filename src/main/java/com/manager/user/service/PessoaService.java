@@ -1,5 +1,6 @@
 package com.manager.user.service;
 
+import com.manager.user.domain.Boleto;
 import com.manager.user.domain.Pessoa;
 import com.manager.user.dto.BoletoDTO;
 import com.manager.user.dto.PessoaDTO;
