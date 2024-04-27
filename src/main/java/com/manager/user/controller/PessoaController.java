@@ -1,6 +1,7 @@
 package com.manager.user.controller;
 
 import com.manager.user.domain.Pessoa;
+import com.manager.user.dto.BoletoDTO;
 import com.manager.user.dto.PessoaDTO;
 import com.manager.user.feign.PessoaFeignClient;
 import com.manager.user.service.PessoaService;
@@ -22,6 +23,12 @@ public class PessoaController {
 
     @Autowired
     private PessoaFeignClient pessoaClient;
+
+    @GetMapping(value = "/boleto/{id}")
+    public ResponseEntity<List<BoletoDTO>> findByIdBoleto(@PathVariable Long id) {
+        List<BoletoDTO> obj = pessoaService.findByIdBoleto(id);
+        return ResponseEntity.ok().body(obj);
+    }
 
 
     @GetMapping(value = "/{id}")

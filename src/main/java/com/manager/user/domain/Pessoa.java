@@ -28,10 +28,12 @@ public class Pessoa implements Serializable {
     @Embedded
     private Endereco endereco;
 
+
+
     public Pessoa() {
     }
 
-    public Pessoa(Long id, String nome, String cpf, LocalDate dataNascimento, Endereco endereco, List<Boleto> boletos) {
+    public Pessoa(Long id, String nome, String cpf, LocalDate dataNascimento, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
